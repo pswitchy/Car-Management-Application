@@ -2,12 +2,14 @@ services:
   - type: web
     name: car-management-backend
     env: node
-    buildCommand: npm install
-    startCommand: node server.js
+    region: oregon
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && node server.js
     envVars:
+      - key: NODE_VERSION
+        value: 18.15.0
       - key: MONGODB_URI
         sync: false
       - key: JWT_SECRET
         sync: false
-      - key: PORT
-        value: 5000
+    autoDeploy: true
